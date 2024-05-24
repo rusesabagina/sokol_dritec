@@ -1,0 +1,24 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap');
+
+body{
+    font-family: 'Quicksand', sans-serif;
+}
+
+.logo{
+    position: absolute;
+    margin-left: 10vw;
+    margin-top: 5px;
+    height: 100px;
+    width: 100px;
+    z-index: 1000;
+}
+.navbar-brand{
+    margin-left: 30vw;
+}
+
+.tableta{
+    width: 90%;
+    height: auto;
+}
+

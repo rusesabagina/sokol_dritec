@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap Form Validation</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container mt-5">
+    <h1>Bootstrap Form Validation</h1>
+    <form id="myForm" class="needs-validation" novalidate>
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="floatingText" placeholder="Text Input" required>
+            <label for="floatingText">Text Input</label>
+            <div class="invalid-feedback">
+                This field is required.
+            </div>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="date" class="form-control" id="floatingDate" required>
+            <label for="floatingDate">Date Input</label>
+            <div class="invalid-feedback">
+                Please select a valid date.
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+<div class="card" style="width: 100%;">
+    <img ng-src="https://placehold.co/600x400" class="card-img-top" alt="placeholder">
+    <div class="card-body">
+    <h3 class="card-title">{{ article.title }} " {{ article.vysledek }} "</h3>
+    <h6 class="card-title">Datum: {{ article.date }}</h6>
+    <h6 class="card-title">Diváků: {{ article.guests }}</h6>
+    <div class="row">
+        <div class="col-md-6">
+            <strong><p class="card-title">Střelci:</p></strong>
+            <ul class="list-group list-group-flush">
+                <li ng-repeat="shooter in ctrl.shootersFinale" class="list-group-item">
+                    <p>{{ shooter.name }} ({{ shooter.minute }})</p>
+                </li>
+            </ul>
+        </div>
+        <div class="col-md-6">
+            <strong><p class="card-title">Karty:</p></strong>
+            <ul class="list-group list-group-flush">
+                <li ng-repeat="card in ctrl.cardsFinale" class="list-group-item">
+                    <p>{{ card.type }} - {{ card.name }} ({{ card.minute }})</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+    
+    <p class="card-text">{{ article.content }}</p>
+    <a href="#" class="btn btn-dark">Publikovat</a>
+    </div>
+</div>
+<footer class="footer mt-auto py-3 bg-light">
+    <div class="container">
+      <span class="text-muted">Place sticky footer content here.</span>
+    </div>
+  </footer>
+<!-- Bootstrap JS (Optional, for form validation) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    document.getElementById('myForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        var textInput = document.getElementById('floatingText');
+        var dateInput = document.getElementById('floatingDate');
+
+        var textValue = textInput.value.trim();
+        var dateValue = dateInput.value;
+
+        // Custom validation for each input field
+
+        if (textValue === '') {
+            textInput.classList.add('is-invalid');
+        } else {
+            textInput.classList.remove('is-invalid');
+        }
+
+        if (dateValue === '') {
+            dateInput.classList.add('is-invalid');
+        } else {
+            dateInput.classList.remove('is-invalid');
+        }
+
+        // Submit the form if all fields are valid
+        if (textValue !== '' && dateValue !== '') {
+            this.submit();
+        }
+    });
+</script>
+
+</body>
+</html>
